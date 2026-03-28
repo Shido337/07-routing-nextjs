@@ -1,16 +1,21 @@
-import NoteModal from '@/components/NoteModal/NoteModal';
+'use client';
+
+import { use } from 'react';
+import { useRouter } from 'next/navigation';
+import Modal from '@/components/Modal/Modal';
 import NotePreviewClient from './NotePreview.client';
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-export default async function InterceptedNotePage({ params }: Props) {
-  const { id } = await params;
+export default function InterceptedNotePage({ params }: Props) {
+  const { id } = use(params);
+  const router = useRouter();
 
   return (
-    <NoteModal>
+    <Modal onClose={() => router.back()}>
       <NotePreviewClient id={id} />
-    </NoteModal>
+    </Modal>
   );
 }
