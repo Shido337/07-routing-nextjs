@@ -1,5 +1,5 @@
 import NoteModal from '@/components/NoteModal/NoteModal';
-import NotePreview from '@/components/NotePreview/NotePreview';
+import NotePreviewClient from './NotePreview.client';
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -10,7 +10,7 @@ export default async function InterceptedNotePage({ params }: Props) {
 
   return (
     <NoteModal>
-      <NotePreview id={id} />
+      <NotePreviewClient id={id} />
     </NoteModal>
   );
 }
